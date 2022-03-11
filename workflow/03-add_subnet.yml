@@ -1,0 +1,12 @@
+---
+- name: Add the Subnet to Virtual Network
+  hosts: localhost
+  connection: local
+  tasks:
+
+    - name: Add subnet
+      azure_rm_subnet:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ subnet_name }}"
+        address_prefix: "{{ subnet_cidr }}"
+        virtual_network: "{{ vnet_name }}"

@@ -1,0 +1,6 @@
+private.yml
+azure/*
+.DS_Store
+env
+artifacts
+*.log

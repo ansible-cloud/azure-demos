@@ -1,0 +1,9 @@
+---
+- name: Create the Resource Group in the specified region
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group_name }}"
+        location: "{{ region }}"

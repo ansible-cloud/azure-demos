@@ -1,0 +1,20 @@
+---
+- name: Create the Azure Windows Virtual Machine
+  hosts: localhost
+  connection: local
+  tasks:
+
+    - name: Create VM
+      azure_rm_virtualmachine:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ win_vm_name }}"
+        os_type: Windows
+        vm_size: "{{ win_vm_size }}"
+        admin_username: "{{ win_admin_user }}"
+        admin_password: "{{ win_admin_password }}"
+        network_interfaces: "{{ win_nic_name }}"
+        image:
+          offer: WindowsServer
+          publisher: MicrosoftWindowsServer
+          sku: "{{ win_vm_sku }}"
+          version: latest
