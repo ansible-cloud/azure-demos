@@ -73,7 +73,7 @@ rhel_public_ip_name: "rhel_demo_ip"
 rhel_nic_name: "rhel_demo_nic"
 rhel_vm_name: "RHEL9-ansible"
 rhel_vm_size: "Standard_DS1_v2"
-rhel_vm_sku: "rh-rhel9"
+rhel_vm_sku: "9_0"
 rhel_public_key: "<SSH-PUBLIC-KEY>"
 
 survey_public_ip: "True"
