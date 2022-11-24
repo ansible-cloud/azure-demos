@@ -1,6 +1,12 @@
 ---
 - name: Create the Azure Linux Virtual Machine
   hosts: localhost
+  vars:
+    vm_names:
+      - srvcentos01
+      - srvcentos02
+      - srvcentos03
+      
   connection: local
   tasks:
 
@@ -16,7 +22,7 @@
     - name: Create VM
       azure_rm_virtualmachine:
         resource_group: "{{ resource_group_name }}"
-        name: "{{ centos_vm_name }}"
+        name: "{{ item }}"
         os_type: Linux
         vm_size: "{{ linux_vm_size }}"
         admin_username: "{{ linux_admin_user }}"
@@ -33,3 +39,4 @@
           publisher: OpenLogic
           sku: "{{ linux_vm_sku }}"
           version: latest
+      loop: "{{ vm_names }}"
