@@ -1,0 +1,33 @@
+---
+- name: Create the Azure Linux Virtual Machine
+  hosts: localhost
+  connection: local
+  tasks:
+
+    - name: Create virtual network interface card
+      azure_rm_networkinterface:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ linux_nic_name }}"
+        virtual_network: "{{ vnet_name }}"
+        subnet: "{{ subnet_name }}"
+        public_ip_name: "{{ linux_public_ip_name }}"
+        security_group: "{{ network_sec_group_name }}"
+
+    - name: Create VM
+      azure_rm_virtualmachine:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ centos_vm_name }}"
+        os_type: Linux
+        vm_size: "{{ linux_vm_size }}"
+        admin_username: "{{ linux_admin_user }}"
+        admin_password: "{{ linux_admin_password }}"
+        managed_disk_type: "{{ disk_type }}"
+        network_interfaces: "{{ linux_nic_name }}"
+        ssh_public_keys:
+          - path: "{{ path_public_key }}"
+            key_data: "{{ public_ssh_key }}"
+        image:
+          offer: CentOS
+          publisher: OpenLogic
+          sku: "{{ linux_vm_sku }}"
+          version: latest
