@@ -6,14 +6,6 @@
       - srvcentos01
       - srvcentos02
       - srvcentos03
-    vm_if:
-      - if_srvcentos01
-      - if_srvcentos02
-      - if_srvcentos03
-    puplicip:
-      - ip_srvcentos01
-      - ip_srvcentos02
-      - ip_srvcentos03
       
   connection: local
   tasks:
@@ -21,16 +13,16 @@
     - name: Create virtual network interface card
       azure_rm_networkinterface:
         resource_group: "{{ resource_group_name }}"
-        name: "{{ item.interface }}"
+        name: "{{ item.if }}"
         virtual_network: "{{ vnet_name }}"
         subnet: "{{ subnet_name }}"
         public_ip_name: "{{ item.ip }}"
         security_group: "{{ network_sec_group_name }}"
-      loop: 
-        - "{{ vm_if.interface }}" 
-        - "{{ puplicip.ip }}"
-      
-     
+      loop:
+        - { if: 'if_srvcentos01', ip: 'ip_srvcentos01' }
+        - { if: 'if_srvcentos02', ip: 'ip_srvcentos02' }
+        - { if: 'if_srvcentos03', ip: 'ip_srvcentos03' }
+
 
     - name: Create VM
       azure_rm_virtualmachine:
