@@ -26,7 +26,9 @@
         subnet: "{{ subnet_name }}"
         public_ip_name: "{{ item.ip }}"
         security_group: "{{ network_sec_group_name }}"
-      loop: "{{ vm_if.interface }}", "{{ puplicip.ip }}"
+      loop: 
+        - "{{ vm_if.interface }}" 
+        - "{{ puplicip.ip }}"
       
      
 
