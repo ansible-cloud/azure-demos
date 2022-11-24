@@ -27,7 +27,7 @@
     - name: Create VM
       azure_rm_virtualmachine:
         resource_group: "{{ resource_group_name }}"
-        name: "{{ item }}"
+        name: "{{ item.name }}"
         os_type: Linux
         vm_size: "{{ linux_vm_size }}"
         admin_username: "{{ linux_admin_user }}"
