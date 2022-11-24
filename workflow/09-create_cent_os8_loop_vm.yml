@@ -33,7 +33,7 @@
         admin_username: "{{ linux_admin_user }}"
         admin_password: "{{ linux_admin_password }}"
         managed_disk_type: "{{ disk_type }}"
-        network_interfaces: "{{ linux_nic_name }}"
+        network_interfaces: "{{ item.linux_nic_name }}"
         ssh_public_keys:
           - path: "{{ path_public_key }}"
             key_data: "{{ public_ssh_key }}"
@@ -44,4 +44,7 @@
           publisher: OpenLogic
           sku: "{{ linux_vm_sku }}"
           version: latest
-      loop: "{{ vm_names }}"
+      loop:
+        - { name: 'srvcentos01', linux_nic_name: 'if_srvcentos01' }
+        - { name: 'srvcentos02', linux_nic_name: 'if_srvcentos02' }
+        - { name: 'srvcentos03', linux_nic_name: 'if_srvcentos03' }
