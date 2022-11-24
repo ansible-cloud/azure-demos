@@ -10,7 +10,7 @@
       - if_srvcentos01
       - if_srvcentos02
       - if_srvcentos03
-    item.puplicip:
+    puplicip:
       - ip_srvcentos01
       - ip_srvcentos02
       - ip_srvcentos03
@@ -24,9 +24,10 @@
         name: "{{ item.interface }}"
         virtual_network: "{{ vnet_name }}"
         subnet: "{{ subnet_name }}"
-        public_ip_name: "{{ item.puplicip }}"
+        public_ip_name: "{{ item.ip }}"
         security_group: "{{ network_sec_group_name }}"
-      loop: "{{ vm_if.interface, item.puplicip }}"
+      loop: "{{ vm_if.interface }}", "{{ puplicip.ip }}"
+      
      
 
     - name: Create VM
