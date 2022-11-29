@@ -9,6 +9,11 @@
       
   connection: local
   tasks:
+  
+    - name: Create resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group_name }}"
+        location: "{{ region }}"
 
     - name: Create virtual network interface card
       azure_rm_networkinterface:
