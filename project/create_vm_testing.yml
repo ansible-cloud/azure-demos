@@ -75,8 +75,8 @@
         admin_password: "{{ win_admin_password }}"
         network_interfaces: "{{ win_nic_name }}"
         os_disk_name: "winos"
-        os_disk_size_gb: "100"
-
+        os_disk_size_gb: "150"
+        ssh_password_enabled: "False"
         image:
           offer: WindowsServer
           publisher: MicrosoftWindowsServer
