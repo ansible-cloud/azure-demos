@@ -77,6 +77,7 @@
         os_disk_name: "winos"
         os_disk_size_gb: "150"
         ssh_password_enabled: "false"
+        no_log: "true"
         image:
           offer: WindowsServer
           publisher: MicrosoftWindowsServer
