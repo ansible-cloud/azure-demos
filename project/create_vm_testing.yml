@@ -77,8 +77,8 @@
         os_disk_name: "winos"
         os_disk_size_gb: "150"
         ssh_password_enabled: "false"
-        image:
-          offer: WindowsServer
-          publisher: MicrosoftWindowsServer
-          sku: "{{ win_vm_sku }}"
-          version: latest
+        # image:
+        #   offer: WindowsServer
+        #   publisher: MicrosoftWindowsServer
+        #   sku: "{{ win_vm_sku }}"
+        #   version: latest   
