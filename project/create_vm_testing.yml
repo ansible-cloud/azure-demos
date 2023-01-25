@@ -4,25 +4,25 @@
   connection: local
   tasks:
     - name: Create resource group
-      azure_rm_resourcegroup:
+      azure.azcollection.azure_rm_resourcegroup:
         name: "{{ resource_group_name }}"
         location: "{{ region }}"
 
     - name: Create virtual network
-      azure_rm_virtualnetwork:
+      azure.azcollection.azure_rm_virtualnetwork:
         resource_group: "{{ resource_group_name }}"
         name: "{{ vnet_name }}"
         address_prefixes: "{{ vnet_cidr }}"
 
     - name: Add subnet
-      azure_rm_subnet:
+      azure.azcollection.azure_rm_subnet:
         resource_group: "{{ resource_group_name }}"
         name: "{{ subnet_name }}"
         address_prefix: "{{ subnet_cidr }}"
         virtual_network: "{{ vnet_name }}"
 
     - name: Create public IP address
-      azure_rm_publicipaddress:
+      azure.azcollection.azure_rm_publicipaddress:
         resource_group: "{{ resource_group_name }}"
         allocation_method: Static
         name: "{{ win_public_ip_name }}"
@@ -39,7 +39,7 @@
         per_host: false
 
     - name: Create Network Security Group that allows SSH and RDP
-      azure_rm_securitygroup:
+      azure.azcollection.azure_rm_securitygroup:
         resource_group: "{{ resource_group_name }}"
         name: "{{ network_sec_group_name }}"
         rules:
@@ -57,7 +57,7 @@
             direction: Inbound
 
     - name: Create virtual network interface card
-      azure_rm_networkinterface:
+      azure.azcollection.azure_rm_networkinterface:
         resource_group: "{{ resource_group_name }}"
         name: "{{ win_nic_name }}"
         virtual_network: "{{ vnet_name }}"
@@ -65,8 +65,15 @@
         public_ip_name: "{{ win_public_ip_name }}"
         security_group: "{{ network_sec_group_name }}"
 
+    - name: Create storage account
+      azure.azcollection.azure_rm_storageaccount:
+        resource_group: "{{ resource_group_name }}"
+        name: '"{{ win_vm_name }}"-sa'
+        type: "Standard_LRS"
+        state: present
+
     - name: Create VM
-      azure_rm_virtualmachine:
+      azure.azcollection.azure_rm_virtualmachine:
         resource_group: "{{ resource_group_name }}"
         name: "{{ win_vm_name }}"
         os_type: "Windows"
@@ -75,6 +82,7 @@
         admin_username: "{{ win_admin_user }}"
         # admin_password: "{{ win_admin_password }}"
         network_interfaces: "{{ win_nic_name }}"
+        storage_account_name: '"{{ win_vm_name }}"-sa'
         os_disk_name: "winos"
         os_disk_size_gb: "150"
         ssh_password_enabled: "false"
