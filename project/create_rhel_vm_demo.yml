@@ -101,7 +101,7 @@
         name: "{{ rhel_vm_name }}"
         vm_size: "{{ rhel_vm_size }}"
         admin_username: "{{ rhel_admin_user }}"
-        admin_password: "{{ rhel_admin_password }}!"
+        admin_password: "{{ rhel_admin_password }}"
         network_interfaces: "{{ rhel_nic_name }}"
         ssh_password_enabled: true
         image:
