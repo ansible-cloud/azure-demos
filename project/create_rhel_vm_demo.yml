@@ -11,7 +11,7 @@
     vnet_name: "demo_vnet"
     subnet_name: "demo_subnet"
     network_sec_group_name: "demo_sec_group"
-    rhel_vm_name: "RHELansible"
+    rhel_vm_name: "RHEL-ansible"
     rhel_vm_size: "Standard_DS1_v2"
     rhel_vm_sku: "8_7"
     rhel_public_ip_name: "rhel_demo_ip"
