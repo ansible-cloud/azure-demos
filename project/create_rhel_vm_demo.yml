@@ -3,6 +3,22 @@
   hosts: localhost
   connection: local
   gather_facts: false
+  vars:
+    resource_group_name: "azure-demo"
+    region: "eastus"
+    vnet_cidr: "10.0.0.0/16"
+    subnet_cidr: "10.0.1.0/24"
+    vnet_name: "demo_vnet"
+    subnet_name: "demo_subnet"
+    network_sec_group_name: "demo_sec_group"
+    rhel_vm_name: "RHELansible"
+    rhel_vm_size: "Standard_DS1_v2"
+    rhel_vm_sku: "8_7"
+    rhel_public_ip_name: "rhel_demo_ip"
+    rhel_nic_name: "rhel_demo_nic"
+    rhel_admin_user: "rheluser"
+    admin_password: "ansible123!"
+    survey_public_ip: "True"
   tasks:
     - name: Create resource group
       azure.azcollection.azure_rm_resourcegroup:
@@ -37,7 +53,7 @@
 
     - name: Set Stat for Ansible Controller
       set_stats:
-        data: 
+        data:
           azure_vm_public_ip: "{{ output_ip_address.state.ip_address }}"
         per_host: false
       when: survey_public_ip == "True"
@@ -85,10 +101,7 @@
         name: "{{ rhel_vm_name }}"
         vm_size: "{{ rhel_vm_size }}"
         admin_username: "{{ rhel_admin_user }}"
-        ssh_password_enabled: false
-        ssh_public_keys:
-          - path: "/home/{{ rhel_admin_user }}/.ssh/authorized_keys"
-            key_data: "{{ rhel_public_key }}"
+        admin_password: "{{ admin_password }}!"
         network_interfaces: "{{ rhel_nic_name }}"
         image:
           offer: RHEL
