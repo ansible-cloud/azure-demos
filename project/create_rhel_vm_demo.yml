@@ -17,7 +17,7 @@
     rhel_public_ip_name: "rhel_demo_ip"
     rhel_nic_name: "rhel_demo_nic"
     rhel_admin_user: "rheluser"
-    admin_password: "ansible123!"
+    rhel_admin_password: "ansible123!"
     survey_public_ip: "True"
   tasks:
     - name: Create resource group
@@ -101,7 +101,7 @@
         name: "{{ rhel_vm_name }}"
         vm_size: "{{ rhel_vm_size }}"
         admin_username: "{{ rhel_admin_user }}"
-        admin_password: "{{ admin_password }}!"
+        admin_password: "{{ rhel_admin_password }}!"
         network_interfaces: "{{ rhel_nic_name }}"
         image:
           offer: RHEL
