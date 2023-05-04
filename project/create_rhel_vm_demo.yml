@@ -104,6 +104,8 @@
         admin_password: "{{ rhel_admin_password }}"
         network_interfaces: "{{ rhel_nic_name }}"
         ssh_password_enabled: true
+        tags:
+          "demo": "true"
         image:
           offer: RHEL
           publisher: RedHat
