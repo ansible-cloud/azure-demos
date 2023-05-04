@@ -75,7 +75,7 @@
         admin_password: "{{ win_admin_password }}"
         network_interfaces: "{{ win_nic_name }}"
         tags:
-          "demo": "true"        
+          "demo": "true"
         image:
           offer: WindowsServer
           publisher: MicrosoftWindowsServer
