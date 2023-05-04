@@ -87,7 +87,8 @@
         os_disk_size_gb: "150"
         ssh_password_enabled: "false"
         tags:
-          "demo": "true"        
+          "demo": "true"
+          "os": "windows"
         image:
           offer: WindowsServer
           publisher: MicrosoftWindowsServer

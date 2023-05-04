@@ -106,6 +106,7 @@
         ssh_password_enabled: true
         tags:
           "demo": "true"
+          "os": "linux"          
         image:
           offer: RHEL
           publisher: RedHat
