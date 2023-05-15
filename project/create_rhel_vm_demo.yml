@@ -75,6 +75,12 @@
             access: Allow
             priority: 1002
             direction: Inbound
+          - name: http
+            protocol: Tcp
+            destination_port_range: 80
+            access: Allow
+            priority: 1003
+            direction: Inbound
 
     - name: Create virtual network interface card
       azure.azcollection.azure_rm_networkinterface:
