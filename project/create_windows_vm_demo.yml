@@ -81,7 +81,10 @@
         admin_password: "{{ win_admin_password }}"
         network_interfaces: "{{ win_nic_name }}"
         tags:
+          "name": "{{ win_vm_name }}"
           "demo": "true"
+          "os": "windows"
+          "username": "{{ win_admin_user }}"
         image:
           offer: WindowsServer
           publisher: MicrosoftWindowsServer

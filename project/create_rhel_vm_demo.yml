@@ -111,8 +111,10 @@
         network_interfaces: "{{ rhel_nic_name }}"
         ssh_password_enabled: true
         tags:
+          "name": "{{ rhel_vm_name }}"
           "demo": "true"
-          "os": "linux"          
+          "os": "linux"
+          "username": "{{ rhel_admin_user }}"
         image:
           offer: RHEL
           publisher: RedHat
