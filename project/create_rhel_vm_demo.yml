@@ -105,6 +105,7 @@
       azure.azcollection.azure_rm_virtualmachine:
         resource_group: "{{ resource_group_name }}"
         name: "{{ rhel_vm_name }}"
+        managed_disk_type: "Standard_LRS"
         vm_size: "{{ rhel_vm_size }}"
         admin_username: "{{ rhel_admin_user }}"
         admin_password: "{{ rhel_admin_password }}"
