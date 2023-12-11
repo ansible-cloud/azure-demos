@@ -31,4 +31,5 @@
           offer: "{{ offer_rhel }}"
           publisher: "{{ publisher_redhat }}"
           sku: "{{ linux_vm_sku }}"
+          version: "{{ version_rhel }}"
 
