@@ -37,10 +37,10 @@
           sku: "{{ linux_vm_sku }}"
           version: "{{ version_rhel }}"
         #####################################
-        plan: 
-          name: "RHEL Plan"
-          product: "{{ linux_vm_sku }}"
-          publisher: "{{ publisher_redhat }}"
+        #plan: 
+          #name: "RHEL Plan"
+          #product: "{{ linux_vm_sku }}"
+          #publisher: "{{ publisher_redhat }}"
     
       
 
