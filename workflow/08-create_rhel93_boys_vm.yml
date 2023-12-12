@@ -44,15 +44,15 @@
             name:
               description:
                 - "RHEL Plan"
-              required: true
+              required: false
             product:
               description:
                 - "RHEL Marketplace Instance 9.-latest"
-              required: true
+              required: false
             publisher:
               description:
                 - "Red Hat as Publisher"
-              required: true
+              required: false
     
       
 
