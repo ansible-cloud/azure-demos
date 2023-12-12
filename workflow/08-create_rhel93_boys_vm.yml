@@ -37,7 +37,7 @@
           sku: "{{ linux_vm_sku }}"
           version: "{{ version_rhel }}"
         #####################################
-        plan:
+        plan: "RHEL93_Plan"
           description:
             - For Market Place Instances RHEL 9.3
           suboptions:
@@ -45,11 +45,11 @@
               description:
                 - "RHEL Plan"
               required: false
-            product:
+            product: "RHEL"
               description:
                 - "RHEL Marketplace Instance 9.-latest"
               required: false
-            publisher:
+            publisher: "REDHAT"
               description:
                 - "Red Hat as Publisher"
               required: false
