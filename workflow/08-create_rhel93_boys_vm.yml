@@ -43,15 +43,15 @@
           suboptions:
             name:
               description:
-                - Billing plan name.
+                - "RHEL Plan"
               required: true
             product:
               description:
-                - RHEL-9.3
+                - "RHEL Marketplace Instance 9.-latest"
               required: true
             publisher:
               description:
-                - Publisher offering the plan.
+                - "Red Hat as Publisher"
               required: true
     
       
