@@ -25,9 +25,7 @@
         admin_username: "{{ linux_admin_user }}"
         admin_password: "{{ linux_admin_password }}"
         started: "{{ started_the_vm }}"
-        data_disks:
-          - managed_disk_type: "{{ disk_type }}"
-            disk_size_gb: "{{ disk_size }}"
+        managed_disk_type: "{{ disk_type }}"
         network_interfaces: "{{ linux_nic_name }}"
         open_ports: "{{ open_ports_vm }}"
         ssh_public_keys:
