@@ -38,21 +38,9 @@
           version: "{{ version_rhel }}"
         #####################################
         plan: 
-          description:
-            - For Market Place Instances RHEL 9.3
-          suboptions:
-            name:
-              description:
-                - "RHEL Plan"
-              required: false
-            product:
-              description:
-                - "RHEL Marketplace Instance 9.-latest"
-              required: false
-            publisher:
-              description:
-                - "Red Hat as Publisher"
-              required: false
+          name: "RHEL Plan"
+          product: "RHEL9"
+          publisher: "REDHAT"
     
       
 
