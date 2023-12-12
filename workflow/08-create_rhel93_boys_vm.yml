@@ -37,11 +37,11 @@
           sku: "{{ linux_vm_sku }}"
           version: "{{ version_rhel }}"
         #####################################
-        plan: "RHEL93_Plan"
+        plan: 
           description:
             - For Market Place Instances RHEL 9.3
           suboptions:
-            name:
+            name: "RHEL93_Plan"
               description:
                 - "RHEL Plan"
               required: false
