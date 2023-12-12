@@ -39,8 +39,8 @@
         #####################################
         plan: 
           name: "RHEL Plan"
-          product: "RHEL9"
-          publisher: "REDHAT"
+          product: "{{ linux_vm_sku }}"
+          publisher: "{{ publisher_redhat }}"
     
       
 
