@@ -16,15 +16,15 @@
 
     - name: Create VM
       azure_rm_virtualmachine:
-        accept_terms: "{{ ms_terms_accepted }}"
-        api_profile: "{{ api_version_name }}"
+        #accept_terms: "{{ ms_terms_accepted }}"
+        #api_profile: "{{ api_version_name }}"
         resource_group: "{{ resource_group_name }}"
         name: "{{ linux_vm_name }}"
-        os_type: "{{ os_version_azure }}"
-        vm_size: "{{ linux_vm_size }}"
+        #os_type: "{{ os_version_azure }}"
+        #vm_size: "{{ linux_vm_size }}"
         admin_username: "{{ linux_admin_user }}"
         admin_password: "{{ linux_admin_password }}"
-        managed_disk_type: "{{ disk_type }}"
+        #managed_disk_type: "{{ disk_type }}"
         network_interfaces: "{{ linux_nic_name }}"
         open_ports: "{{ open_ports_vm }}"
         ssh_public_keys:
@@ -37,10 +37,10 @@
           sku: "{{ linux_vm_sku }}"
           version: "{{ version_rhel }}"
         #####################################
-        plan: 
-          name: "RHEL Plan"
-          product: "RHEL"
-          publisher: "RedHat"
+        #plan: 
+          #name: "RHEL Plan"
+          #product: "RHEL"
+          #publisher: "RedHat"
     
       
 
