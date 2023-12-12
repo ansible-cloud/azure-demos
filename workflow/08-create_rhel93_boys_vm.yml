@@ -36,4 +36,23 @@
           publisher: "{{ publisher_redhat }}"
           sku: "{{ linux_vm_sku }}"
           version: "{{ version_rhel }}"
+        #####################################
+        plan:
+          description:
+            - For Market Place Instances RHEL 9.3
+          suboptions:
+            name:
+              description:
+                - Billing plan name.
+              required: true
+            product:
+              description:
+                - RHEL-9.3
+              required: true
+            publisher:
+              description:
+                - Publisher offering the plan.
+              required: true
+    
+      
 
