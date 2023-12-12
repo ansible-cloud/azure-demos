@@ -103,7 +103,7 @@
 
     - name: Setup public keys
       when: rhel_public_key is defined
-      ansibe.builtin.set_fact:
+      ansible.builtin.set_fact:
         rhel_ssh_public_keys:
           - path: "/home/{{ rhel_admin_user }}/.ssh/authorized_keys"
             key_data: "{{ rhel_public_key }}"
