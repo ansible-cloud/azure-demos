@@ -1,12 +1,10 @@
-
 ---
 - name: Create the Azure Linux Virtual Machine
   hosts: localhost
   connection: local
   tasks:
-
-    - name: Create Network Security Group that allows SSH and RDP
-      azure.azcollection.azure_rm_securitygroup:
+    - name: Create Network Security Group that allows SSH, HTTPS and HTTP
+      azure_rm_securitygroup:
       resource_group: "{{ resource_group_name }}"
       name: "{{ network_sec_group_name }}"
         rules:
@@ -28,7 +26,7 @@
             access: Allow
             priority: 1003
             direction: Inbound
-    
+            
     - name: Create virtual network interface card
       azure_rm_networkinterface:
         resource_group: "{{ resource_group_name }}"
