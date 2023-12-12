@@ -24,7 +24,6 @@
         vm_size: "{{ linux_vm_size }}"
         admin_username: "{{ linux_admin_user }}"
         admin_password: "{{ linux_admin_password }}"
-        started: "{{ started_the_vm }}"
         managed_disk_type: "{{ disk_type }}"
         network_interfaces: "{{ linux_nic_name }}"
         open_ports: "{{ open_ports_vm }}"
@@ -32,6 +31,7 @@
           - path: "{{ path_public_key }}"
             key_data: "{{ public_ssh_key }}"
         image:
+          started: "{{ started_the_vm }}"
           offer: "{{ offer_rhel }}"
           publisher: "{{ publisher_redhat }}"
           sku: "{{ linux_vm_sku }}"
