@@ -41,15 +41,15 @@
           description:
             - For Market Place Instances RHEL 9.3
           suboptions:
-            name: "RHEL93_Plan"
+            name:
               description:
                 - "RHEL Plan"
               required: false
-            product: "RHEL"
+            product:
               description:
                 - "RHEL Marketplace Instance 9.-latest"
               required: false
-            publisher: "REDHAT"
+            publisher:
               description:
                 - "Red Hat as Publisher"
               required: false
