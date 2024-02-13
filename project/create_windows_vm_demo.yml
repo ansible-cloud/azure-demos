@@ -55,6 +55,12 @@
             access: Allow
             priority: 1002
             direction: Inbound
+          - name: HTTP
+            protocol: Tcp
+            destination_port_range: 80
+            access: Allow
+            priority: 1003
+            direction: Inbound
 
     - name: Create virtual network interface card
       azure_rm_networkinterface:
@@ -74,6 +80,11 @@
         admin_username: "{{ win_admin_user }}"
         admin_password: "{{ win_admin_password }}"
         network_interfaces: "{{ win_nic_name }}"
+        tags:
+          "name": "{{ win_vm_name }}"
+          "demo": "true"
+          "os": "windows"
+          "username": "{{ win_admin_user }}"
         image:
           offer: WindowsServer
           publisher: MicrosoftWindowsServer

@@ -1,0 +1,19 @@
+---
+- name: change Azure VM status
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    resource_group_name: "azure-demo"
+    vm_name_list: ["RHEL-ansible"]
+    # Set to present to create a VM with the configuration specified by other options, or to update the configuration of an existing VM.
+    # Set to absent to remove a VM.
+    # Does not affect power state. Use started/allocated/restarted parameters to change the power state of a VM.
+  tasks:
+    - name: toggle VM state
+      azure.azcollection.azure_rm_virtualmachine:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ item }}"
+        state: "{{ input_state | default('absent') }}"
+      loop: "{{ vm_name_list }}"
+        
