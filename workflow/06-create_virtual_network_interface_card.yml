@@ -4,11 +4,20 @@
   connection: local
   tasks:
   
-    - name: Create virtual network interface card
+    - name: Create a Windows virtual network interface card
       azure_rm_networkinterface:
         resource_group: "{{ resource_group_name }}"
         name: "{{ win_nic_name }}"
         virtual_network: "{{ vnet_name }}"
         subnet: "{{ subnet_name }}"
         public_ip_name: "{{ win_public_ip_name }}"
+        security_group: "{{ network_sec_group_name }}"
+
+    - name: Create a Linux virtual network interface card
+      azure_rm_networkinterface:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ linux_nic_name }}"
+        virtual_network: "{{ vnet_name }}"
+        subnet: "{{ subnet_name }}"
+        public_ip_name: "{{ linux_public_ip_name }}"
         security_group: "{{ network_sec_group_name }}"
