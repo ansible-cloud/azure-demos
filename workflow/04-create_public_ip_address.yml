@@ -8,7 +8,7 @@
       azure_rm_publicipaddress:
         resource_group: "{{ resource_group_name }}"
         allocation_method: Static
-        name: "{{ win_public_ip }}"
+        name: "{{ win_public_ip_name }}"
       register: output_ip_address_win
 
     - name: Dump public IP for VM which will be created
@@ -25,7 +25,7 @@
       azure_rm_publicipaddress:
         resource_group: "{{ resource_group_name }}"
         allocation_method: Static
-        name: "{{ linux_public_ip }}"
+        name: "{{ linux_public_ip_name }}"
       register: output_ip_address_linux
 
     - name: Dump public IP for VM which will be created
