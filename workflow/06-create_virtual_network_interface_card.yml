@@ -10,7 +10,7 @@
         name: "{{ win_nic_name }}"
         virtual_network: "{{ vnet_name }}"
         subnet: "{{ subnet_name }}"
-        public_ip_name: "{{ win_public_ip_name }}"
+        win_public_ip_name: "{{ win_public_ip }}"
         security_group: "{{ network_sec_group_name }}"
 
     - name: Create a Linux virtual network interface card
@@ -19,5 +19,5 @@
         name: "{{ linux_nic_name }}"
         virtual_network: "{{ vnet_name }}"
         subnet: "{{ subnet_name }}"
-        public_ip_name: "{{ linux_public_ip_name }}"
+        linux_public_ip_name: "{{ linux_public_ip }}"
         security_group: "{{ network_sec_group_name }}"
