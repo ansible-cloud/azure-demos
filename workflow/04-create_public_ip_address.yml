@@ -4,20 +4,36 @@
   connection: local
   tasks:
    
-    - name: Create public IP address
+    - name: Create public IP address for Windows
       azure_rm_publicipaddress:
         resource_group: "{{ resource_group_name }}"
         allocation_method: Static
-        name: "{{ win_public_ip_name }}"
-      register: output_ip_address
+        name: "{{ win_public_ip }}"
+      register: output_ip_address_win
 
     - name: Dump public IP for VM which will be created
       debug:
-        msg: "The public IP is {{ output_ip_address.state.ip_address }}"
+        msg: "The public IP is {{ output_ip_address_win.state.ip_address }}"
 
     - name: Set Stat for Ansible Controller
       set_stats:
         data: 
-          azure_vm_public_ip: "{{ output_ip_address.state.ip_address }}"
+          azure_vm_public_ip: "{{ output_ip_address.state_win.ip_address }}"
         per_host: false
 
+    - name: Create public IP address for Linux
+      azure_rm_publicipaddress:
+        resource_group: "{{ resource_group_name }}"
+        allocation_method: Static
+        name: "{{ linux_public_ip }}"
+      register: output_ip_address_linux
+
+    - name: Dump public IP for VM which will be created
+      debug:
+        msg: "The public IP is {{ output_ip_address_linux.state.ip_address }}"
+
+    - name: Set Stat for Ansible Controller
+      set_stats:
+        data: 
+          azure_vm_public_ip: "{{ output_ip_address.state_linux.ip_address }}"
+        per_host: false
