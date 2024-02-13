@@ -18,7 +18,7 @@
     - name: Set Stat for Ansible Controller
       set_stats:
         data: 
-          azure_vm_public_ip: "{{ output_ip_address.state_win.ip_address }}"
+          azure_vm_public_ip: "{{ output_ip_address_win.state.ip_address }}"
         per_host: false
 
     - name: Create public IP address for Linux
@@ -35,5 +35,5 @@
     - name: Set Stat for Ansible Controller
       set_stats:
         data: 
-          azure_vm_public_ip: "{{ output_ip_address.state_linux.ip_address }}"
+          azure_vm_public_ip: "{{ output_ip_address_linux.state.ip_address }}"
         per_host: false
