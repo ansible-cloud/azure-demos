@@ -14,6 +14,7 @@ linux_public_ip_name: linux_public_ip
 linux_public_ip_name1: linux1_public_ip
 linux_nic_name: rhel01_demo_nic
 linux1_nic_name: rhel02_demo_nic
+win_nic_name: win_nic
 linux_admin_user: wmarx
 linux_admin_password: redhat123!
 linux_vm_sku: 9-lvm-gen2
