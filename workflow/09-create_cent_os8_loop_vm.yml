@@ -8,6 +8,10 @@
       - srvcentos03
       
   connection: local
+
+  vars_files:
+    - vars/main.yml
+  
   tasks:
   
     - name: Create resource group
