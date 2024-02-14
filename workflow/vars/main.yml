@@ -9,7 +9,7 @@ network_sec_group_name: linux_sec_group
 linux_vm_name: rhel93-01
 linux_vm_name1: rhel93-02
 linux_vm_size: Standard_DS1_v2
-win_public_ip_name: win_public_ip
+win_public_ip:win_ip
 linux_public_ip_name: linux_public_ip
 linux_public_ip_name1: linux1_public_ip
 linux_nic_name: rhel01_demo_nic
