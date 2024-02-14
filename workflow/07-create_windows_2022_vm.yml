@@ -2,6 +2,10 @@
 - name: Create the Azure Windows Virtual Machine
   hosts: localhost
   connection: local
+
+  vars_files:
+    - vars/vars.yml
+  
   tasks:
 
     - name: Create VM
