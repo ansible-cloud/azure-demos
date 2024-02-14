@@ -2,6 +2,10 @@
 - name: Create the Virtual Network Interface card
   hosts: localhost
   connection: local
+
+  vars_files:
+    - vars/vars.yml
+  
   tasks:
   
     - name: Create a Windows virtual network interface card
