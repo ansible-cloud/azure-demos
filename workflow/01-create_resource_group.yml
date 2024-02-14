@@ -1,14 +1,13 @@
 ---
 - name: Create the Resource Group in the specified region
   hosts: localhost
+  connection: local
+
   vars_files:
     - vars/main.yml
-  connection: local
   
   tasks:
     - name: Create resource group
-      vars_files:
-        - vars/main.yml
       azure_rm_resourcegroup:
         name: "{{ resource_group_name }}"
         location: "{{ region }}"
