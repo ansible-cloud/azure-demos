@@ -1,0 +1,34 @@
+---
+resource_group_name: azure-demo
+region: eastus
+vnet_cidr: 10.0.0.0/16
+subnet_cidr: 10.0.1.0/24
+vnet_name: demo_vnet
+subnet_name: demo_subnet
+network_sec_group_name: linux_sec_group
+linux_vm_name: rhel93-01
+linux_vm_name1: rhel93-02
+linux_vm_size: Standard_DS1_v2
+win_public_ip_name: win_public_ip
+linux_public_ip_name: linux_public_ip
+linux_nic_name: rhel01_demo_nic
+linux1_nic_name: rhel02_demo_nic
+linux_admin_user: wmarx
+linux_admin_password: redhat123!
+linux_vm_sku: 9-lvm-gen2
+offer_rhel: RHEL
+publisher_redhat: redhat
+path_public_key: /home/wmarx/.ssh/authorized_keys
+public_ssh_key: >-
+  ssh-rsa
+  AAAAB3NzaC1yc2EAAAADAQABAAABAQCdFRMQVARy5txGGcFB9+39bkoVSbYVGZxOKItQjbI9i/jtlxlAqLIHdRbgJWvk5rl1hmDimSRgyoHaWU30yClbgqe3X830Viv1lMo71WAdXl/DnryDdLNMNIFryUQKH4o3Qlne01cVc8nI/wAMzwA3z0sMluYRwik+U0+DyS2nhyPpNFYhvrFMm02qikuxM3/c04l2Umt/d2kwNVt0ewTSlXo3NsP9/ic6KmzXMcuvt/248CRsHUzoRRBgbE9RjhntXeGFNHubPrj/AD5VPBGLO3oGCAX0rIkCD7nxQQLkGK4bUEOkT1x9APoWB//0oV5chijUFaYoPZIcbP+tHprR
+disk_type: StandardSSD_LRS
+api_version_name: latest
+ms_terms_accepted: 'true'
+os_version_azure: Linux
+version_rhel: latest
+started_the_vm: 'true'
+open_ports_vm:
+  - 22
+  - 443
+  - 80
