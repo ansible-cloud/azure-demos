@@ -1,10 +1,9 @@
 ---
 - name: Create the Resource Group in the specified region
   hosts: localhost
-  connection: local
-
   vars_files:
     - vars/vars.yml
+  connection: local
   
   tasks:
     - name: Create resource group
