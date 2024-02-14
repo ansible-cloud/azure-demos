@@ -2,6 +2,10 @@
 - name: Create the Azure Linux Virtual Machine
   hosts: localhost
   connection: local
+
+  vars_files:
+    - vars/main.yml
+  
   tasks:
     - name: Create VM RHEL01
       azure_rm_virtualmachine:
