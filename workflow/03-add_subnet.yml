@@ -2,6 +2,10 @@
 - name: Add the Subnet to Virtual Network
   hosts: localhost
   connection: local
+
+  vars_files:
+    - vars/vars.yml
+  
   tasks:
 
     - name: Add subnet
