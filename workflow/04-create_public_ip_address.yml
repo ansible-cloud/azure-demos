@@ -2,6 +2,10 @@
 - name: Create the Public IP Address
   hosts: localhost
   connection: local
+
+  vars_files:
+    - vars/vars.yml
+  
   tasks:
 
 # Public IP Windows VM
