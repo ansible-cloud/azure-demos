@@ -2,6 +2,10 @@
 - name: Create the Network Security Group
   hosts: localhost
   connection: local
+
+  vars_files:
+    - vars/vars.yml
+  
   tasks:
    
     - name: Create Network Security Group that allows SSH and RDP
