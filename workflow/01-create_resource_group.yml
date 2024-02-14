@@ -2,6 +2,10 @@
 - name: Create the Resource Group in the specified region
   hosts: localhost
   connection: local
+
+  vars_files:
+    - vars/vars.yml
+  
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
