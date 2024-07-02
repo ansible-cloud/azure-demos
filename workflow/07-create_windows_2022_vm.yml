@@ -5,7 +5,7 @@
   tasks:
 
     - name: Create VM
-      azure_rm_virtualmachine:
+      azure.azcollection.azure_rm_virtualmachine:
         resource_group: "{{ resource_group_name }}"
         name: "{{ win_vm_name }}"
         os_type: Windows

@@ -29,11 +29,11 @@
       register: output_ip_address
 
     - name: Dump public IP for VM which will be created
-      debug:
+      ansible.builtin.debug:
         msg: "The public IP is {{ output_ip_address.state.ip_address }}"
 
     - name: Set Stat for Ansible Controller
-      set_stats:
+      ansible.builtin.set_stats:
         data: 
           azure_vm_public_ip: "{{ output_ip_address.state.ip_address }}"
         per_host: false
@@ -62,8 +62,10 @@
         name: "{{ win_nic_name }}"
         virtual_network: "{{ vnet_name }}"
         subnet: "{{ subnet_name }}"
-        public_ip_name: "{{ win_public_ip_name }}"
         security_group: "{{ network_sec_group_name }}"
+        ip_configurations:
+          - name: ipconfig1
+            public_ip_address_name: "{{ win_public_ip_name }}"
 
     - name: Create storage account
       azure.azcollection.azure_rm_storageaccount:
@@ -91,4 +93,3 @@
           publisher: MicrosoftWindowsServer
           sku: "{{ win_vm_sku }}"
           version: latest
-#

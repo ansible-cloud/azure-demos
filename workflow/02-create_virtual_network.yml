@@ -5,7 +5,7 @@
   tasks:
 
     - name: Create virtual network
-      azure_rm_virtualnetwork:
+      azure.azcollection.azure_rm_virtualnetwork:
         resource_group: "{{ resource_group_name }}"
         name: "{{ vnet_name }}"
         address_prefixes: "{{ vnet_cidr }}"

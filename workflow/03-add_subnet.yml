@@ -5,7 +5,7 @@
   tasks:
 
     - name: Add subnet
-      azure_rm_subnet:
+      azure.azcollection.azure_rm_subnet:
         resource_group: "{{ resource_group_name }}"
         name: "{{ subnet_name }}"
         address_prefix: "{{ subnet_cidr }}"

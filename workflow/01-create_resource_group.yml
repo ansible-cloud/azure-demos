@@ -4,6 +4,6 @@
   connection: local
   tasks:
     - name: Create resource group
-      azure_rm_resourcegroup:
+      azure.azcollection.azure_rm_resourcegroup:
         name: "{{ resource_group_name }}"
         location: "{{ region }}"
