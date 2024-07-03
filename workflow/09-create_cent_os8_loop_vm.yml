@@ -50,7 +50,7 @@
         image:
           offer: CentOS
           publisher: OpenLogic
-          sku: 8_4
+          sku: 8-LVM
           version: latest
       loop:
         - { name: 'srvcentos01', linux_nic_name: 'if_srvcentos01' }
