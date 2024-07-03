@@ -48,9 +48,9 @@
           - path: "{{ path_public_key }}"
             key_data: "{{ public_ssh_key }}"
         image:
-          offer: CentOS
+          offer: "CentOS 8.4"
           publisher: OpenLogic
-          sku: "{{ linux_vm_sku }}"
+          sku: 8_4
           version: latest
       loop:
         - { name: 'srvcentos01', linux_nic_name: 'if_srvcentos01' }
