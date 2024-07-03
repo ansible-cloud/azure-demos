@@ -30,8 +30,8 @@
         security_group: "{{ network_sec_group_name }}"
       loop:
         - if_srvcentos01
-        - if_srvcentos01
-        - if_srvcentos01
+        - if_srvcentos02
+        - if_srvcentos03
 
 
     - name: Create VM
