@@ -25,7 +25,8 @@
         name: "{{ item.if }}"
         virtual_network: "{{ vnet_name }}"
         subnet: "{{ subnet_name }}"
-        public_ip_name: "{{ item.ip }}"
+        # public_ip_name: "{{ item.ip }}"
+        name: "{{ item.ip }}"
         security_group: "{{ network_sec_group_name }}"
       loop:
         - { if: 'if_srvcentos01', ip: 'ip_srvcentos01' }
