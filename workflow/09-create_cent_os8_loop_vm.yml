@@ -47,8 +47,6 @@
         ssh_public_keys:
           - path: "{{ path_public_key }}"
             key_data: "{{ public_ssh_key }}"
-          - path: "{{ path_public_key }}"
-            key_data: "{{ public_ssh_key2 }}"
         image:
           offer: CentOS
           publisher: OpenLogic
