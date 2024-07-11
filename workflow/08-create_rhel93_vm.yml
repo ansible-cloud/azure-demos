@@ -7,23 +7,6 @@
     - vars/main.yml
   
   tasks:
-    - name: Create a Linux virtual network interface card
-      azure_rm_networkinterface:
-        resource_group: "{{ resource_group_name }}"
-        name: "{{ linux_nic_name }}"
-        virtual_network: "{{ vnet_name }}"
-        subnet: "{{ subnet_name }}"
-        name: "{{ linux_public_ip_name }}"
-        security_group: "{{ network_sec_group_name }}"
-        
-    - name: Create a second Linux virtual network interface card for 2 second RHEL VM
-      azure_rm_networkinterface:
-        resource_group: "{{ resource_group_name }}"
-        name: "{{ linux1_nic_name }}"
-        virtual_network: "{{ vnet_name }}"
-        subnet: "{{ subnet_name }}"
-        name: "{{ linux_public_ip_name1 }}"
-        security_group: "{{ network_sec_group_name }}"
         
     - name: Create VM RHEL01
       azure_rm_virtualmachine:
