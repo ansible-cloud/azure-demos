@@ -7,19 +7,6 @@
     - vars/main.yml
   
   tasks:
-    - name: Create a Windows virtual network interface card
-      azure_rm_networkinterface:
-        location: "{{ region }}"
-        name: "{{ win_nic_name }}"
-        resource_group: "{{ resource_group_name }}"
-        virtual_network: "{{ vnet_name }}"
-        subnet: "{{ subnet_name }}"
-        security_group: "{{ network_sec_group_name }}"
-        ip_configurations:
-          - name: ipconfig1
-            public_ip_address_name: "{{ win_public_ip }}"
-            primary: true
-
     - name: Create a Linux virtual network interface card
       azure_rm_networkinterface:
         location: "{{ region }}"
