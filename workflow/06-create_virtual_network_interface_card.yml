@@ -9,6 +9,7 @@
   tasks:
     - name: Create a Windows virtual network interface card
       azure_rm_networkinterface:
+        location: "{{ region }}"
         name: "{{ win_nic_name }}"
         resource_group: "{{ resource_group_name }}"
         virtual_network: "{{ vnet_name }}"
@@ -21,6 +22,7 @@
 
     - name: Create a Linux virtual network interface card
       azure_rm_networkinterface:
+        location: "{{ region }}"
         resource_group: "{{ resource_group_name }}"
         name: "{{ linux_nic_name }}"
         virtual_network: "{{ vnet_name }}"
@@ -33,6 +35,7 @@
 
     - name: Create a second Linux virtual network interface card for 2 second RHEL VM
       azure_rm_networkinterface:
+        location: "{{ region }}"
         resource_group: "{{ resource_group_name }}"
         name: "{{ linux1_nic_name }}"
         virtual_network: "{{ vnet_name }}"
