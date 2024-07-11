@@ -28,7 +28,7 @@
         security_group: "{{ network_sec_group_name }}"
         ip_configurations:
           - name: ipconfig2
-            public_ip_address_name: {{ linux_public_ip_name }}
+            public_ip_address_name: "{{ linux_public_ip_name }}"
             primary: true
 
     - name: Create a second Linux virtual network interface card for 2 second RHEL VM
@@ -41,5 +41,5 @@
         security_group: "{{ network_sec_group_name }}"
         ip_configurations:
           - name: ipconfig3
-            public_ip_address_name: {{ linux_public_ip_name1 }}
+            public_ip_address_name: "{{ linux_public_ip_name1 }}"
             primary: true
