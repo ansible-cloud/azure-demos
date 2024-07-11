@@ -6,8 +6,8 @@ subnet_cidr: 10.0.1.0/24
 vnet_name: demo_vnet
 subnet_name: demo_subnet
 network_sec_group_name: linux_sec_group
-linux_vm_name: rhel93-01
-linux_vm_name1: rhel93-02
+linux_vm_name: rhel94-01
+linux_vm_name1: rhel94-02
 linux_vm_size: Standard_DS1_v2
 win_public_ip: win_ip
 win_public_ip_name: win_ip1
