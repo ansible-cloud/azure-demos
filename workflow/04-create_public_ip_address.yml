@@ -8,25 +8,6 @@
   
   tasks:
 
-# Public IP Windows VM
-  
-    - name: Create public IP address for Windows
-      azure_rm_publicipaddress:
-        location: "{{ region }}"
-        resource_group: "{{ resource_group_name }}"
-        allocation_method: Static
-        name: "{{ win_public_ip_name }}"
-      register: output_ip_address_win
-
-    - name: Dump public IP for VM which will be created
-      debug:
-        msg: "The public IP is {{ output_ip_address_win.state.ip_address }}"
-
-    - name: Set Stat for Ansible Controller
-      set_stats:
-        data: 
-          azure_vm_public_ip: "{{ output_ip_address_win.state.ip_address }}"
-        per_host: false
 
 # Public IP Linux VM_1
 
