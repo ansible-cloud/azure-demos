@@ -32,7 +32,7 @@
           #product: "RHEL"
           #publisher: "RedHat"
 
-    - name: Create VM RHEL02
+    - name: Create VM RHEL
       azure_rm_virtualmachine:
         resource_group: "{{ resource_group_name }}"
         name: "{{ linux_vm_name1 }}"
