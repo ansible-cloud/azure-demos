@@ -10,6 +10,7 @@
    
     - name: Create Network Security Group that allows SSH and RDP
       azure_rm_securitygroup:
+        location: "{{ region }}"
         resource_group: "{{ resource_group_name }}"
         name: "{{ network_sec_group_name }}"
         rules:
