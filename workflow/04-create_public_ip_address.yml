@@ -12,6 +12,7 @@
   
     - name: Create public IP address for Windows
       azure_rm_publicipaddress:
+        location: "{{ region }}"
         resource_group: "{{ resource_group_name }}"
         allocation_method: Static
         name: "{{ win_public_ip_name }}"
@@ -31,6 +32,7 @@
 
     - name: Create public IP address for Linux
       azure_rm_publicipaddress:
+       location: "{{ region }}"
         resource_group: "{{ resource_group_name }}"
         allocation_method: Static
         name: "{{ linux_public_ip_name }}"
@@ -50,6 +52,7 @@
 
     - name: Create public IP address for Linux
       azure_rm_publicipaddress:
+        location: "{{ region }}"
         resource_group: "{{ resource_group_name }}"
         allocation_method: Static
         name: "{{ linux_public_ip_name1 }}"
