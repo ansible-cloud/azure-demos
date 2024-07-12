@@ -1,11 +1,11 @@
 ---
-resource_group_name: openenv-vz4mt
+resource_group_name: aap2-trier
 region: germanywestcentral
 vnet_cidr: 10.0.0.0/16
 subnet_cidr: 10.0.1.0/24
-vnet_name: CentO79S-Mater-vnet
-subnet_name: default
-network_sec_group_name: linux_sec_group
+vnet_name: aap2-rhel-vnet
+subnet_name: aap2-subnet
+network_sec_group_name: app2_sec_group
 linux_vm_name: SRVRHEL9-03
 linux_vm_name1: SRVRHEL9-04
 linux_vm_size: Standard_DS1_v2
