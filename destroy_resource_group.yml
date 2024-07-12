@@ -1,0 +1,16 @@
+---
+- name: Destroy Demo Resources
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - vars/main.yml
+  
+  tasks:
+    - name: Destroy resource group
+      azure.azcollection.azure_rm_resourcegroup:
+        name: "{{ resource_group_name }}"
+        location: "{{ region }}"
+        state: absent
+        force_delete_nonempty: true
