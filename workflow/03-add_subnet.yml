@@ -10,7 +10,6 @@
 
     - name: Add subnet
       azure_rm_subnet:
-        location: "{{ region }}"
         resource_group: "{{ resource_group_name }}"
         name: "{{ subnet_name }}"
         address_prefix: "{{ subnet_cidr }}"
