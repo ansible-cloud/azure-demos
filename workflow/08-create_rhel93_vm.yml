@@ -10,8 +10,7 @@
         
     - name: Create VM RHEL01
       azure_rm_virtualmachine:
-        #name: "{{ linux_vm_name }}"
-        name: "{{ _hosts | default(omit) }}"
+        name: "{{ linux_vm_name_survey }}"
         location: "{{ region }}"
         resource_group: "{{ resource_group_name }}"
         vm_size: "{{ linux_vm_size }}"
