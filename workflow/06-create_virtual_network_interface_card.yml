@@ -10,7 +10,6 @@
         name: "{{ win_nic_name }}"
         virtual_network: "{{ vnet_name }}"
         subnet: "{{ subnet_name }}"
-        public_ip_name: "{{ win_public_ip_name }}"
         ip_configurations:
           - name: ipconfig1
             public_ip_address_name: "{{ win_public_ip_name }}"
