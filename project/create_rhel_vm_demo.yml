@@ -13,7 +13,7 @@
     network_sec_group_name: "demo_sec_group"
     rhel_vm_name: "RHEL-ansible"
     rhel_vm_size: "Standard_DS1_v2"
-    rhel_vm_sku: "8_7"
+    rhel_vm_sku: "9_6"
     rhel_public_ip_name: "rhel_demo_ip"
     rhel_nic_name: "rhel_demo_nic"
     rhel_admin_user: "rheluser"
