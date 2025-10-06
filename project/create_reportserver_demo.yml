@@ -1,0 +1,146 @@
+---
+- name: Create Azure VM for the report server
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    resource_group_name: "azure-demo"
+    region: "eastus"
+    vnet_cidr: "10.0.0.0/16"
+    subnet_cidr: "10.0.1.0/24"
+    vnet_name: "demo_vnet"
+    subnet_name: "demo_subnet"
+    network_sec_group_name: "demo_sec_group"
+    rhel_vm_name: "reportserver"
+    rhel_vm_size: "Standard_DS1_v2"
+    rhel_vm_sku: "9_6"
+    rhel_public_ip_name: "reportserver_ip"
+    rhel_nic_name: "reportserver_nic"
+    rhel_admin_user: "rheluser"
+    rhel_admin_password: "RedHatAnsible123!"
+    survey_public_ip: "True"
+  tasks:
+  
+    - name: Create resource group
+      azure.azcollection.azure_rm_resourcegroup:
+        name: "{{ resource_group_name }}"
+        location: "{{ region }}"
+
+    - name: Create virtual network
+      azure.azcollection.azure_rm_virtualnetwork:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ vnet_name }}"
+        address_prefixes: "{{ vnet_cidr }}"
+
+    - name: Add subnet
+      azure.azcollection.azure_rm_subnet:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ subnet_name }}"
+        address_prefix: "{{ subnet_cidr }}"
+        virtual_network: "{{ vnet_name }}"
+
+    - name: Create public IP address
+      azure.azcollection.azure_rm_publicipaddress:
+        resource_group: "{{ resource_group_name }}"
+        allocation_method: Static
+        name: "{{ rhel_public_ip_name }}"
+      register: output_ip_address
+      when: survey_public_ip == "True"
+
+    - name: Dump public IP for VM which will be created
+      ansible.builtin.debug:
+        msg: "The public IP is {{ output_ip_address.state.ip_address }}"
+      when: survey_public_ip == "True"
+
+    - name: Set Stat for Ansible Controller
+      ansible.builtin.set_stats:
+        data:
+          azure_vm_public_ip: "{{ output_ip_address.state.ip_address }}"
+        per_host: false
+      when: survey_public_ip == "True"
+
+    - name: Create Network Security Group that allows SSH and RDP
+      azure.azcollection.azure_rm_securitygroup:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ network_sec_group_name }}"
+        rules:
+          - name: SSH
+            protocol: Tcp
+            destination_port_range: 22
+            access: Allow
+            priority: 1001
+            direction: Inbound
+          - name: RDP
+            protocol: Tcp
+            destination_port_range: 3389
+            access: Allow
+            priority: 1002
+            direction: Inbound
+          - name: http
+            protocol: Tcp
+            destination_port_range: 80
+            access: Allow
+            priority: 1003
+            direction: Inbound
+          - name: https
+            protocol: Tcp
+            destination_port_range: 443
+            access: Allow
+            priority: 1004
+            direction: Inbound
+          - name: http2
+            protocol: Tcp
+            destination_port_range: 8088
+            access: Allow
+            priority: 1005
+            direction: Inbound
+
+    - name: Create virtual network interface card
+      azure.azcollection.azure_rm_networkinterface:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ rhel_nic_name }}"
+        virtual_network: "{{ vnet_name }}"
+        subnet: "{{ subnet_name }}"
+        security_group: "{{ network_sec_group_name }}"
+      when: survey_public_ip != "True"
+
+    - name: Create virtual network interface card
+      azure.azcollection.azure_rm_networkinterface:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ rhel_nic_name }}"
+        virtual_network: "{{ vnet_name }}"
+        subnet: "{{ subnet_name }}"
+        security_group: "{{ network_sec_group_name }}"
+        ip_configurations:
+          - name: ipconfig1
+            public_ip_address_name: "{{ rhel_public_ip_name }}"
+      when: survey_public_ip == "True"
+
+    - name: Setup public keys
+      when: rhel_public_key is defined
+      ansible.builtin.set_fact:
+        rhel_ssh_public_keys:
+          - path: "/home/{{ rhel_admin_user }}/.ssh/authorized_keys"
+            key_data: "{{ rhel_public_key }}"
+
+    - name: Create VM
+      azure.azcollection.azure_rm_virtualmachine:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ rhel_vm_name }}"
+        managed_disk_type: "Standard_LRS"
+        vm_size: "{{ rhel_vm_size }}"
+        admin_username: "{{ rhel_admin_user }}"
+        admin_password: "{{ rhel_admin_password }}"
+        network_interfaces: "{{ rhel_nic_name }}"
+        ssh_password_enabled: true
+        ssh_public_keys: "{{ rhel_ssh_public_keys | default(omit) }}"
+        tags:
+          "name": "{{ rhel_vm_name }}"
+          "demo": "true"
+          "os": "linux"
+          "username": "{{ rhel_admin_user }}"
+        image:
+          offer: RHEL
+          publisher: RedHat
+          sku: "{{ rhel_vm_sku }}"
+          version: latest
