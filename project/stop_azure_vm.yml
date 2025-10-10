@@ -1,0 +1,19 @@
+---
+- name: Stop an Azure VM
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    resource_group_name: "azure-demo"
+    vm_name_list: ["RHEL-ansible"]
+    # Set to present to create a VM with the configuration specified by other options, or to update the configuration of an existing VM.  state: present
+    # Set to absent to remove a VM.  state: absent
+    # Does not affect power state. Use started/allocated/restarted parameters to change the power state of a VM.
+    # started: false.  Set to true to start the VM, false to stop it.
+  tasks:
+    - name: Toggle VM state (STOP the VM)
+      azure.azcollection.azure_rm_virtualmachine:
+        resource_group: "{{ resource_group_name }}"
+        name: "{{ item }}"
+        started: "{{ power_state | default('false') }}" # Set to true to start the VM, false to STOP it.
+      loop: "{{ vm_name_list }}"
